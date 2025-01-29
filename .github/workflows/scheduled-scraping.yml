@@ -1,0 +1,35 @@
+name: Scrape WHOIS data
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Runs every week (Sunday at midnight)
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.x"
+    - name: Install Dependencies
+      run: pip install -r requirements.txt
+    - name: Run Python Script
+      run: python scrape_data.py
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git checkout -b data
+        git add public/*.json
+        git commit -m 'Update WHOIS data'
+        git push --force origin data
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
