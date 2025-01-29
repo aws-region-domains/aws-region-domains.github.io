@@ -5,12 +5,6 @@ from datetime import datetime
 import botocore
 import whois
 
-EXTRA_REGIONS = [
-    {
-        'name': 'ap-southeast-7',
-        'description': 'Asia Pacific (Thailand)',
-    },
-]
 
 def _parse_whois_date(whois_date):
     if isinstance(whois_date, list):
@@ -63,10 +57,6 @@ def main():
         for region_name, region_detail in partition['regions'].items()
         if not region_name.endswith('-global')
     ]
-
-    for extra_region in EXTRA_REGIONS:
-        if not any(region['name'] == extra_region['name'] for region in regions):
-            regions.append(extra_region)
 
     with open('docs/aws-regions.json', 'w', encoding='utf-8') as f:
         json.dump(regions, f, indent=4)
