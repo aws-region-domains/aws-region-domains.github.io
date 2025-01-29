@@ -66,7 +66,7 @@
         <p>
             Maintained by the same owner of <a href="https://us-east-1.com" target="_blank">us-east-1.com</a>
             <br>
-            Updated weekly.
+            <a href="https://github.com/aws-region-domains/aws-region-domains.github.io" target="_blank">Updated weekly</a>.
         </p>
     </footer>
 
@@ -104,11 +104,11 @@
                         `;
                     } else {
                         // Construct table row for registered domains
-                        const statusText = (
+                        const statusText = [...new Set((
                             Array.isArray(status)
                             ? status
                             : [status]
-                        ).map(s => s.split(' ')[0]).join('<br>');
+                        ).map(s => s.split(' ')[0]))].join('<br>');
 
                         row.innerHTML = `
                             <td>
