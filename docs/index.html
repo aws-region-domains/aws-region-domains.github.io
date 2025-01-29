@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WHOIS Info</title>
-    <!-- Bootstrap CSS for styling -->
+    <title>AWS Region Domains WHOIS Info</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .table-container {
+        body {
             text-align: center;
             margin-top: 30px;
+        }
+        .table-container {
+            max-width: min(100vw, 960px);
         }
         th {
             min-width: 120px;
@@ -27,13 +29,22 @@
     </style>
 </head>
 <body>
-    <div class="container table-container">
-        <h1 class="text-center">AWS Region Name Domains</h1>
-        <p>
-            Retrived from public WHOIS Information
-            <br>
-            Click a domain name to open it's detailed WHOIS information.
-        </p>
+    <div class="container">
+        <header>
+            <h1 class="text-center">AWS Region Name Domains</h1>
+            <p>
+                You have probably read my story about buying <a href="https://dev.to/aws-builders/i-bought-us-east-1com-a-look-at-security-dns-traffic-and-protecting-aws-users-15ng" target="_blank">us-east-1.com</a>
+                <br>
+                and wondered if others have done the same.
+                <br>
+            </p>
+            <p>Yes!</p>
+            <p>
+                Data are from public WHOIS Information. Click a domain name to open its details.
+            </p>
+        </header>
+    </div>
+    <div class="container table-container table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -54,6 +65,8 @@
     <footer>
         <p>
             Maintained by the same owner of <a href="https://us-east-1.com" target="_blank">us-east-1.com</a>
+            <br>
+            Updated weekly.
         </p>
     </footer>
 
@@ -95,7 +108,7 @@
                             Array.isArray(status)
                             ? status
                             : [status]
-                        ).map(s => s.split(' ')[0]).join('\n');
+                        ).map(s => s.split(' ')[0]).join('<br>');
 
                         row.innerHTML = `
                             <td>
