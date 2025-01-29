@@ -68,7 +68,7 @@ def main():
         if not any(region['name'] == extra_region['name'] for region in regions):
             regions.append(extra_region)
 
-    with open('public/aws-regions.json', 'w', encoding='utf-8') as f:
+    with open('docs/aws-regions.json', 'w', encoding='utf-8') as f:
         json.dump(regions, f, indent=4)
 
     result = []
@@ -83,7 +83,7 @@ def main():
                 'registered': False,
             })
 
-    with open('public/whois_info.json', 'w', encoding='utf-8') as f:
+    with open('docs/whois_info.json', 'w', encoding='utf-8') as f:
         json.dump(result, f, indent=4)
 
     print('WHOIS data has been written to whois_info.json.')
