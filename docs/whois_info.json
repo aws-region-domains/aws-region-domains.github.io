@@ -1,0 +1,442 @@
+[
+    {
+        "domain": "af-south-1.com",
+        "region": "af-south-1",
+        "description": "Africa (Cape Town)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-east-1.com",
+        "region": "ap-east-1",
+        "description": "Asia Pacific (Hong Kong)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-northeast-1.com",
+        "region": "ap-northeast-1",
+        "description": "Asia Pacific (Tokyo)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-northeast-2.com",
+        "region": "ap-northeast-2",
+        "description": "Asia Pacific (Seoul)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-northeast-3.com",
+        "region": "ap-northeast-3",
+        "description": "Asia Pacific (Osaka)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-south-1.com",
+        "region": "ap-south-1",
+        "description": "Asia Pacific (Mumbai)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-south-2.com",
+        "region": "ap-south-2",
+        "description": "Asia Pacific (Hyderabad)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-11-22",
+        "updated_date": "2024-12-02",
+        "expiry_date": "2025-11-22",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-southeast-1.com",
+        "region": "ap-southeast-1",
+        "description": "Asia Pacific (Singapore)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-southeast-2.com",
+        "region": "ap-southeast-2",
+        "description": "Asia Pacific (Sydney)",
+        "registrar": "Squarespace Domains II LLC",
+        "creation_date": "2018-12-10",
+        "updated_date": "2024-11-25",
+        "expiry_date": "2025-12-10",
+        "status": [
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "client transfer prohibited http://www.icann.org/epp#client transfer prohibited",
+            "client delete prohibited http://www.icann.org/epp#client delete prohibited"
+        ]
+    },
+    {
+        "domain": "ap-southeast-3.com",
+        "region": "ap-southeast-3",
+        "description": "Asia Pacific (Jakarta)",
+        "registrar": "Amazon Registrar, Inc.",
+        "creation_date": "2024-11-04",
+        "updated_date": "2024-11-04",
+        "expiry_date": "2025-11-04",
+        "status": "ok https://icann.org/epp#ok"
+    },
+    {
+        "domain": "ap-southeast-4.com",
+        "region": "ap-southeast-4",
+        "description": "Asia Pacific (Melbourne)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-13",
+        "expiry_date": "2025-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ap-southeast-5.com",
+        "region": "ap-southeast-5",
+        "description": "Asia Pacific (Malaysia)",
+        "registrar": "Amazon Registrar, Inc.",
+        "creation_date": "2024-11-04",
+        "updated_date": "2024-11-04",
+        "expiry_date": "2025-11-04",
+        "status": "ok https://icann.org/epp#ok"
+    },
+    {
+        "domain": "ap-southeast-7.com",
+        "region": "ap-southeast-7",
+        "description": "Asia Pacific (Thailand)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2025-01-29",
+        "updated_date": "2025-01-29",
+        "expiry_date": "2026-01-29",
+        "status": [
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "addPeriod https://icann.org/epp#addPeriod"
+        ]
+    },
+    {
+        "domain": "ca-central-1.com",
+        "region": "ca-central-1",
+        "description": "Canada (Central)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-09",
+        "expiry_date": "2026-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "ca-west-1.com",
+        "region": "ca-west-1",
+        "description": "Canada West (Calgary)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-09",
+        "expiry_date": "2026-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-central-1.com",
+        "region": "eu-central-1",
+        "description": "Europe (Frankfurt)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-central-2.com",
+        "region": "eu-central-2",
+        "description": "Europe (Zurich)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-09",
+        "expiry_date": "2026-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-north-1.com",
+        "region": "eu-north-1",
+        "description": "Europe (Stockholm)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-south-1.com",
+        "region": "eu-south-1",
+        "description": "Europe (Milan)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-south-2.com",
+        "region": "eu-south-2",
+        "description": "Europe (Spain)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-09",
+        "expiry_date": "2026-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-west-1.com",
+        "region": "eu-west-1",
+        "description": "Europe (Ireland)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-09",
+        "expiry_date": "2026-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "eu-west-2.com",
+        "region": "eu-west-2",
+        "description": "Europe (London)",
+        "registrar": "123-Reg Limited",
+        "creation_date": "2022-11-20",
+        "updated_date": "2024-10-26",
+        "expiry_date": "2026-11-20",
+        "status": "ok https://icann.org/epp#ok"
+    },
+    {
+        "domain": "eu-west-3.com",
+        "region": "eu-west-3",
+        "description": "Europe (Paris)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "il-central-1.com",
+        "region": "il-central-1",
+        "description": "Israel (Tel Aviv)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2024-10-24",
+        "expiry_date": "2025-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "me-central-1.com",
+        "region": "me-central-1",
+        "description": "Middle East (UAE)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2024-03-11",
+        "updated_date": "2025-02-13",
+        "expiry_date": "2025-03-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "me-south-1.com",
+        "region": "me-south-1",
+        "description": "Middle East (Bahrain)",
+        "registrar": "NAMECHEAP INC",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "mx-central-1.com",
+        "region": "mx-central-1",
+        "description": "Mexico (Central)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2025-01-22",
+        "updated_date": "2025-01-22",
+        "expiry_date": "2027-01-22",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "sa-east-1.com",
+        "region": "sa-east-1",
+        "description": "South America (Sao Paulo)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "us-east-1.com",
+        "region": "us-east-1",
+        "description": "US East (N. Virginia)",
+        "registrar": "Cloudflare, Inc.",
+        "creation_date": "2021-12-21",
+        "updated_date": "2024-11-21",
+        "expiry_date": "2025-12-21",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "us-east-2.com",
+        "region": "us-east-2",
+        "description": "US East (Ohio)",
+        "registrar": "TUCOWS, INC.",
+        "creation_date": "2023-12-21",
+        "updated_date": "2024-12-20",
+        "expiry_date": "2025-12-21",
+        "status": [
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited"
+        ]
+    },
+    {
+        "domain": "us-west-1.com",
+        "region": "us-west-1",
+        "description": "US West (N. California)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2022-06-05",
+        "updated_date": "2024-05-06",
+        "expiry_date": "2025-06-05",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "us-west-2.com",
+        "region": "us-west-2",
+        "description": "US West (Oregon)",
+        "registrar": "NameCheap, Inc.",
+        "creation_date": "2019-05-11",
+        "updated_date": "2024-11-20",
+        "expiry_date": "2026-05-11",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "cn-north-1.com",
+        "region": "cn-north-1",
+        "description": "China (Beijing)",
+        "registrar": "Spaceship, Inc.",
+        "creation_date": "2024-11-19",
+        "updated_date": "2024-11-19",
+        "expiry_date": "2025-11-19",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "cn-northwest-1.com",
+        "region": "cn-northwest-1",
+        "description": "China (Ningxia)",
+        "registrar": "Spaceship, Inc.",
+        "creation_date": "2024-11-19",
+        "updated_date": "2024-11-19",
+        "expiry_date": "2025-11-19",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "us-gov-east-1.com",
+        "region": "us-gov-east-1",
+        "description": "AWS GovCloud (US-East)",
+        "registrar": "Gandi SAS",
+        "creation_date": "2024-03-11",
+        "updated_date": "2024-10-24",
+        "expiry_date": "2025-03-11",
+        "status": [
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientTransferProhibited http://www.icann.org/epp#clientTransferProhibited"
+        ]
+    },
+    {
+        "domain": "us-gov-west-1.com",
+        "region": "us-gov-west-1",
+        "description": "AWS GovCloud (US-West)",
+        "registrar": "Gandi SAS",
+        "creation_date": "2024-03-11",
+        "updated_date": "2024-10-24",
+        "expiry_date": "2025-03-11",
+        "status": [
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientTransferProhibited http://www.icann.org/epp#clientTransferProhibited"
+        ]
+    },
+    {
+        "domain": "us-iso-east-1.com",
+        "region": "us-iso-east-1",
+        "description": "US ISO East",
+        "registrar": "MarkMonitor, Inc.",
+        "creation_date": "2024-11-20",
+        "updated_date": "2024-11-20",
+        "expiry_date": "2025-11-20",
+        "status": [
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited",
+            "clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)",
+            "clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)",
+            "clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)"
+        ]
+    },
+    {
+        "domain": "us-iso-west-1.com",
+        "region": "us-iso-west-1",
+        "description": "US ISO WEST",
+        "registrar": "MarkMonitor Inc.",
+        "creation_date": "2024-11-20",
+        "updated_date": "2024-11-20",
+        "expiry_date": "2025-11-20",
+        "status": [
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited"
+        ]
+    },
+    {
+        "domain": "us-isob-east-1.com",
+        "region": "us-isob-east-1",
+        "description": "US ISOB East (Ohio)",
+        "registrar": "MarkMonitor Inc.",
+        "creation_date": "2024-11-20",
+        "updated_date": "2024-11-20",
+        "expiry_date": "2025-11-20",
+        "status": [
+            "clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited",
+            "clientTransferProhibited https://icann.org/epp#clientTransferProhibited",
+            "clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited"
+        ]
+    },
+    {
+        "domain": "eu-isoe-west-1.com",
+        "region": "eu-isoe-west-1",
+        "description": "EU ISOE West",
+        "registrar": "Cloudflare, Inc.",
+        "creation_date": "2024-11-19",
+        "updated_date": "2024-11-19",
+        "expiry_date": "2025-11-19",
+        "status": "clientTransferProhibited https://icann.org/epp#clientTransferProhibited"
+    },
+    {
+        "domain": "us-isof-east-1.com",
+        "registered": false
+    },
+    {
+        "domain": "us-isof-south-1.com",
+        "registered": false
+    }
+]
