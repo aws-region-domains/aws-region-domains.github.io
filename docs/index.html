@@ -11,7 +11,7 @@
             margin-top: 30px;
         }
         .table-container {
-            max-width: min(100vw, 960px);
+            max-width: min(100vw, 1000px);
         }
         th {
             min-width: 120px;
@@ -22,6 +22,27 @@
         }
         th:nth-child(2) {
             min-width: 180px;
+        }
+        th:nth-child(6) {
+            min-width: 200px;
+        }
+        th[data-sort-key] {
+            cursor: pointer;
+            user-select: none;
+        }
+        th[data-sort-key]:focus {
+            outline: 2px solid #007bff;
+            outline-offset: -2px;
+        }
+        .sort-arrow {
+            font-size: 0.75em;
+        }
+        .filter-row th {
+            padding: 0.35rem 0.5rem;
+        }
+        .column-filter {
+            min-width: 110px;
+            text-align: left;
         }
         footer {
             text-align: center;
@@ -41,26 +62,49 @@
             <p>Yes!</p>
             <p>
                 Data are from public WHOIS Information. Click a domain name to open its details.
+                <br>
+                Click a column heading to sort, or filter any column below the heading.
             </p>
         </header>
     </div>
-    <div class="container table-container table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Domain</th>
-                    <th>Registrar</th>
-                    <th>Creation Date</th>
-                    <th>Updated Date</th>
-                    <th>Expiry Date</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="whois-table-body">
-                <!-- Dynamic rows will be inserted here -->
-            </tbody>
-        </table>
+    <div class="container table-container">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span id="result-count" class="text-muted small" aria-live="polite"></span>
+            <button type="button" id="reset-filters" class="btn btn-sm btn-outline-secondary" disabled>Reset filters &amp; sort</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th data-sort-key="domain" tabindex="0">Domain<span class="sort-arrow" aria-hidden="true"></span></th>
+                        <th data-sort-key="registrar" tabindex="0">Registrar<span class="sort-arrow" aria-hidden="true"></span></th>
+                        <th data-sort-key="creation_date" tabindex="0">Creation Date<span class="sort-arrow" aria-hidden="true"></span></th>
+                        <th data-sort-key="updated_date" tabindex="0">Updated Date<span class="sort-arrow" aria-hidden="true"></span></th>
+                        <th data-sort-key="expiry_date" tabindex="0">Expiry Date<span class="sort-arrow" aria-hidden="true"></span></th>
+                        <th data-sort-key="status" tabindex="0">Status<span class="sort-arrow" aria-hidden="true"></span></th>
+                    </tr>
+                    <tr class="filter-row">
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="domain" list="filter-options-domain" placeholder="Filter" aria-label="Filter by domain"></th>
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="registrar" list="filter-options-registrar" placeholder="Filter" aria-label="Filter by registrar"></th>
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="creation_date" list="filter-options-creation_date" placeholder="Filter" aria-label="Filter by creation date"></th>
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="updated_date" list="filter-options-updated_date" placeholder="Filter" aria-label="Filter by updated date"></th>
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="expiry_date" list="filter-options-expiry_date" placeholder="Filter" aria-label="Filter by expiry date"></th>
+                        <th><input class="form-control form-control-sm column-filter" type="text" data-key="status" list="filter-options-status" placeholder="Filter" aria-label="Filter by status"></th>
+                    </tr>
+                </thead>
+                <tbody id="whois-table-body">
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
     </div>
+
+    <datalist id="filter-options-domain"></datalist>
+    <datalist id="filter-options-registrar"></datalist>
+    <datalist id="filter-options-creation_date"></datalist>
+    <datalist id="filter-options-updated_date"></datalist>
+    <datalist id="filter-options-expiry_date"></datalist>
+    <datalist id="filter-options-status"></datalist>
 
     <footer>
         <p>
@@ -76,56 +120,259 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        const COLUMNS = [
+            { key: 'domain' },
+            { key: 'registrar' },
+            { key: 'creation_date' },
+            { key: 'updated_date' },
+            { key: 'expiry_date' },
+            { key: 'status' },
+        ];
+
+        const DEFAULT_SORT = {
+            key: 'creation_date',
+            direction: 'asc',
+        };
+
+        const state = {
+            rows: [],
+            filters: Object.fromEntries(COLUMNS.map(({ key }) => [key, ''])),
+            sortKey: DEFAULT_SORT.key,
+            sortDirection: DEFAULT_SORT.direction,
+        };
+
+        const tableBody = document.getElementById('whois-table-body');
+        const resultCount = document.getElementById('result-count');
+        const resetButton = document.getElementById('reset-filters');
+
+        function normalizeStatuses(status) {
+            if (status === null || status === undefined) {
+                return [];
+            }
+
+            const statuses = Array.isArray(status) ? status : [status];
+            return [...new Set(
+                statuses.filter(Boolean).map((value) => String(value).split(' ')[0])
+            )];
+        }
+
+        function toRow(record) {
+            const statuses = normalizeStatuses(record.status);
+
+            return {
+                registered: record.registered !== false,
+                domain: record.domain ?? '',
+                registrar: record.registrar ?? '',
+                creation_date: record.creation_date ?? '',
+                updated_date: record.updated_date ?? '',
+                expiry_date: record.expiry_date ?? '',
+                status: statuses.join(' '),
+                statuses,
+            };
+        }
+
+        function matchesFilters(row) {
+            return COLUMNS.every(({ key }) => {
+                const term = state.filters[key].trim().toLowerCase();
+                if (!term) {
+                    return true;
+                }
+
+                return row[key].toLowerCase().includes(term);
+            });
+        }
+
+        function compareRows(a, b) {
+            const aValue = a[state.sortKey];
+            const bValue = b[state.sortKey];
+
+            if (!aValue && !bValue) {
+                return 0;
+            }
+            if (!aValue) {
+                return 1;
+            }
+            if (!bValue) {
+                return -1;
+            }
+
+            const result = aValue.localeCompare(bValue, undefined, {
+                numeric: true,
+                sensitivity: 'base',
+            });
+            return state.sortDirection === 'asc' ? result : -result;
+        }
+
+        function createCell(text) {
+            const cell = document.createElement('td');
+            cell.textContent = text;
+            return cell;
+        }
+
+        function createRow(row) {
+            const tr = document.createElement('tr');
+
+            if (!row.registered) {
+                tr.appendChild(createCell(row.domain));
+                const cell = createCell('Domain is not registered');
+                cell.colSpan = 5;
+                cell.className = 'text-center text-danger';
+                tr.appendChild(cell);
+                return tr;
+            }
+
+            const domainCell = document.createElement('td');
+            const link = document.createElement('a');
+            link.href = `https://whois.com/whois/${encodeURIComponent(row.domain)}`;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = row.domain;
+            domainCell.appendChild(link);
+            tr.appendChild(domainCell);
+
+            tr.appendChild(createCell(row.registrar));
+            tr.appendChild(createCell(row.creation_date));
+            tr.appendChild(createCell(row.updated_date));
+            tr.appendChild(createCell(row.expiry_date));
+
+            const statusCell = document.createElement('td');
+            row.statuses.forEach((status, index) => {
+                if (index > 0) {
+                    statusCell.appendChild(document.createElement('br'));
+                }
+                statusCell.appendChild(document.createTextNode(status));
+            });
+            tr.appendChild(statusCell);
+
+            return tr;
+        }
+
+        function populateAutocomplete() {
+            COLUMNS.forEach(({ key }) => {
+                const datalist = document.getElementById(`filter-options-${key}`);
+                const values = new Set();
+
+                state.rows.forEach((row) => {
+                    if (key === 'status') {
+                        row.statuses.forEach((status) => values.add(status));
+                    } else if (row[key]) {
+                        values.add(row[key]);
+                    }
+                });
+
+                const options = [...values].sort((a, b) => a.localeCompare(b, undefined, {
+                    numeric: true,
+                    sensitivity: 'base',
+                }));
+
+                datalist.replaceChildren(...options.map((value) => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    return option;
+                }));
+            });
+        }
+
+        function updateSortIndicators() {
+            document.querySelectorAll('th[data-sort-key]').forEach((th) => {
+                const active = th.dataset.sortKey === state.sortKey;
+                th.querySelector('.sort-arrow').textContent =
+                    active ? (state.sortDirection === 'asc' ? ' ▲' : ' ▼') : '';
+                th.setAttribute(
+                    'aria-sort',
+                    active ? (state.sortDirection === 'asc' ? 'ascending' : 'descending') : 'none'
+                );
+            });
+        }
+
+        function render() {
+            const rows = state.rows
+                .filter(matchesFilters)
+                .sort((a, b) => (state.sortKey ? compareRows(a, b) : 0));
+
+            const fragment = document.createDocumentFragment();
+            if (rows.length === 0) {
+                const tr = document.createElement('tr');
+                const cell = createCell('No domains match the current filters.');
+                cell.colSpan = COLUMNS.length;
+                cell.className = 'text-center text-muted';
+                tr.appendChild(cell);
+                fragment.appendChild(tr);
+            } else {
+                rows.forEach((row) => fragment.appendChild(createRow(row)));
+            }
+
+            tableBody.replaceChildren(fragment);
+
+            resultCount.textContent = rows.length === state.rows.length
+                ? `${rows.length} domains`
+                : `Showing ${rows.length} of ${state.rows.length} domains`;
+
+            const sortChanged =
+                state.sortKey !== DEFAULT_SORT.key ||
+                state.sortDirection !== DEFAULT_SORT.direction;
+
+            resetButton.disabled = !(
+                sortChanged || COLUMNS.some(({ key }) => state.filters[key].trim())
+            );
+
+            updateSortIndicators();
+        }
+
+        function setSort(key) {
+            if (state.sortKey === key) {
+                state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+            } else {
+                state.sortKey = key;
+                state.sortDirection = 'asc';
+            }
+            render();
+        }
+
+        document.querySelectorAll('th[data-sort-key]').forEach((th) => {
+            th.addEventListener('click', () => setSort(th.dataset.sortKey));
+            th.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    setSort(th.dataset.sortKey);
+                }
+            });
+        });
+
+        document.querySelectorAll('.column-filter').forEach((input) => {
+            input.addEventListener('input', () => {
+                state.filters[input.dataset.key] = input.value;
+                render();
+            });
+        });
+
+        resetButton.addEventListener('click', () => {
+            COLUMNS.forEach(({ key }) => {
+                state.filters[key] = '';
+            });
+            state.sortKey = DEFAULT_SORT.key;
+            state.sortDirection = DEFAULT_SORT.direction;
+            document.querySelectorAll('.column-filter').forEach((input) => {
+                input.value = '';
+            });
+            render();
+        });
+
         // Function to fetch and display whois data
         async function fetchWhoisInfo() {
             try {
                 const response = await fetch('/whois_info.json');
+                if (!response.ok) {
+                    throw new Error(`Request failed with status ${response.status}`);
+                }
+
                 const data = await response.json();
-
-                const tableBody = document.getElementById('whois-table-body');
-                tableBody.innerHTML = '';
-
-                data.forEach(({
-                    domain,
-                    registered,
-                    registrar,
-                    creation_date,
-                    updated_date,
-                    expiry_date,
-                    status,
-                }) => {
-                    const row = document.createElement('tr');
-
-                    // Check if the domain is registered
-                    if (registered === false) {
-                        row.innerHTML = `
-                            <td>${domain}</td>
-                            <td colspan="5" class="text-center text-danger">Domain is not registered</td>
-                        `;
-                    } else {
-                        // Construct table row for registered domains
-                        const statusText = [...new Set((
-                            Array.isArray(status)
-                            ? status
-                            : [status]
-                        ).map(s => s.split(' ')[0]))].join('<br>');
-
-                        row.innerHTML = `
-                            <td>
-                                <a href="https://whois.com/whois/${domain}" target="_blank">${domain}</a>
-                            </td>
-                            <td>${registrar}</td>
-                            <td>${creation_date}</td>
-                            <td>${updated_date}</td>
-                            <td>${expiry_date}</td>
-                            <td>${statusText}</td>
-                        `.replace('([ ]{2,}|\n)', ' ');
-                    }
-
-                    tableBody.appendChild(row);
-                });
+                state.rows = data.map(toRow);
+                populateAutocomplete();
+                render();
             } catch (error) {
                 console.error('Error fetching WHOIS data:', error);
+                resultCount.textContent = 'Unable to load WHOIS data.';
             }
         }
 
